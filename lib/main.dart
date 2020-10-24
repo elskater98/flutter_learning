@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MaterialApp(home: HomeCard()));
+void main() => runApp(MaterialApp(home: UserId()));
 
-class HomeCard extends StatelessWidget {
+class UserId extends StatefulWidget {
+  @override
+  _UserIdState createState() => _UserIdState();
+}
+
+class _UserIdState extends State<UserId> {
+
+  int score = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,6 +20,15 @@ class HomeCard extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
+            score+=1;
+          });
+        },
+          child: Icon(Icons.add),
+          backgroundColor: Colors.grey[800],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
@@ -41,7 +58,7 @@ class HomeCard extends StatelessWidget {
             Text('Level'.toUpperCase(),
                 style: TextStyle(color: Colors.grey, letterSpacing: 2.0)),
             SizedBox(height: 10.0),
-            Text('10',
+            Text('$score',
                 style: TextStyle(
                     color: Colors.amberAccent[200],
                     letterSpacing: 2.0,

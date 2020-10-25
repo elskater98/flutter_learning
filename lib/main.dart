@@ -22,6 +22,34 @@ class _QuoteListState extends State<QuoteList> {
     Quote('Bye', 'Jobs', false)
   ];
 
+  Widget quoteTemplate(quote){
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Card(
+        margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
+        child:Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Text(quote.text,
+            style: TextStyle(
+              fontSize: 18.0,
+              color: Colors.grey[600]
+            ),
+          ),
+            SizedBox(height: 6.0),
+            Text(
+              quote.author,
+              style:TextStyle(
+                fontSize: 16.0,
+                color: Colors.grey[800]
+              ) ,
+            )
+          ],
+        ) ,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,8 +63,8 @@ class _QuoteListState extends State<QuoteList> {
           children: /*quotes.map((item){
             return Text(item);
           }).toList(),*/
-        _quotes.map((e) {return Text(e.text+' '+e.author);}).toList()
-
+        //_quotes.map((e) {return Text(e.text+' '+e.author);}).toList()
+        _quotes.map((quote) => quoteTemplate(quote)).toList()
       ),
     );
   }
